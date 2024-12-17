@@ -19,11 +19,7 @@ This project aims to improve a previous research work on **cotton water stress c
 ---
 
 ## Project Overview
-The primary goal of this project is to classify cotton water stress into different categories using advanced deep learning techniques. Categories include:
-- **Rainfed**
-- **Fully irrigated**
-- **Percent deficit**
-- **Time delay**
+The primary goal of this project is to classify cotton water stress into different categories (**Rainfed**, **Fully irrigated**, **Percent deficit**, and **Time delay**) using advanced deep learning techniques for a purpose to analyse the different irrigation strategies and provide insights into optimal practices for enhancing plant growth. 
 
 By integrating **InceptionResNetV2** and exploring denoising techniques, the project improves upon the previous work in terms of accuracy, training efficiency, and inference speed.
 
