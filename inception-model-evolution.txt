@@ -1,0 +1,51 @@
+Source: [1] https://towardsdatascience.com/a-simple-guide-to-the-versions-of-the-inception-network-7fc52b863202
+[2] https://gghantiwala.medium.com/understanding-the-architecture-of-the-inception-network-and-applying-it-to-a-real-world-dataset-169874795540
+
+The problematic: How to make CNNs more efficient without going deeper which is more costly and not necessarily effective, prone to overfitting especially if you have limited labelled training data
+
+SOME GENERALITIES:
+- A larger kernel is preferred for information that is distributed more globally, and a smaller kernel is preferred for information that is distributed more locally.
+- Needless to say, it is a pretty deep classifier. As with any very deep network, it is subject to the vanishing gradient problem.
+
+1. INCEPTION V1:
+• Why not have filters with multiple sizes operate on the same level? The network essentially would get a bit “wider” rather than “deeper”.
+The different filters are added parallelly instead of being fully connected one after the other.
+• To make it cheaper, the authors limit the number of input channels by adding an extra 1x1 convolution before the 3x3 and 5x5 convolutions.
+• An interesting explanation of this dim reduction is available in [2]
+• EXAMPLE: GoogLeNet -> add 2 auxiliary classifiers for loss (vanishing gradient pb)
+
+2. INCEPTION V2:
+• The intuition was that, neural networks perform better when convolutions didn’t alter the dimensions of the input drastically. Reducing the dimensions too much may cause loss of information, known as a “representational bottleneck”
+• Using smart factorization methods, convolutions can be made more efficient in terms of computational complexity: Reduce representational bottleneck + Reduce nb parameters
+• Factorize 5x5 convolution to two 3x3 convolution operations to improve computational speed.
+• Or, asymmetric convolutions: factorize convolutions of filter size nxn to a combination of 1xn and nx1 convolutions.
+• Or, the filter banks in the module were expanded (made wider instead of deeper) to remove the representational bottleneck.
+
+3. INCEPTION V3:
+• Auxiliary classifiers didn’t contribute much until near the end of the training process, when accuracies were nearing saturation -> regularize function (especially if they have BatchNorm or Dropout operations)
+• Contains all V2 upgrades and adds: RMSProp Optimizer, Factorized 7x7 convolutions, BatchNorm in the Auxillary Classifiers, Label Smoothing (A type of regularizing component added to the loss formula that prevents the network from becoming too confident about a class. Prevents over fitting).
+
+4. INCEPTION V4:
+• Some of the modules were more complicated than necessary.
+• Make the modules more uniform -> boost performance 
+• Stem is modified: initial set of operations performed before introducing the Inception blocks.
+• Uses the same factorisation technics (but with 7x7 Conv). Called A,B and C models
+• Introduced “Reduction Blocks”: used to change the width and height of the grid -> hyperparameters
+
+
+5. INCEPTION RESNET:
+• Introduce residual connections that add the output of the convolution operation of the inception module, to the input -> Replace the pooling layer in the inception model (but still can be found in the reduction blocks)
+• Input and output after convolution must have the same dimensions -> use 1x1 convolutions after the original convolutions, to match the depth sizes (Depth is increased after convolution). 
+• To increase stability in a deep network with residual units and a large number of filters > 1000, the authors scaled the residual activations by a value around 0.1 to 0.3.
+
+• Inception-ResNet v1 has a computational cost that is similar to that of Inception v3.
+• Inception-ResNet v2 has a computational cost that is similar to that of Inception v4.
+• They have different stems, as illustrated in the Inception v4 section.
+• Both sub-versions have the same structure for the inception modules A, B, C and the reduction blocks. Only difference is the hyper-parameter settings.
+
+
+CONCLUSION:
+It was found that Inception-ResNet models were able to achieve higher accuracies at a lower epoch (faster)
+
+
+

@@ -1,0 +1,29 @@
+TYPES OF NOISE:
+Here’s a concise summary for each type of noise:
+
+* Gaussian Noise: Fine grain that randomly varies pixel intensity, common in low-light images.  
+* Salt-and-Pepper Noise: Sharp black and white dots scattered randomly across the image.  
+* Speckle Noise: Grainy patterns that appear in smooth regions, often in radar or medical images.  
+* Poisson Noise: Random brightness fluctuations, most noticeable in low-light areas.  
+* Uniform Noise: Consistent grain across the image with equal probability for all intensity changes.  
+* Periodic Noise: Regular, repetitive patterns like stripes or waves caused by interference.  
+* Impulse Noise: Sporadic, extreme-intensity pixels that disrupt the image.  
+* Quantization Noise: Banding artifacts in gradients due to limited precision in digital representation.  
+* Chromatic Noise: Random colour speckles in uniform colour regions, distorting natural tones.  
+* Banding Noise: Horizontal or vertical stripes, often subtle but systematic in appearance.  
+* Compression Artifacts: Blocky patterns and loss of detail due to lossy compression (e.g., JPEG).  
+* Motion Blur Noise: Streaking of objects from relative motion during exposure.  
+* Thermal Noise: Random intensity variations caused by sensor heat, prominent in long exposures.  
+* Flicker Noise: Temporal brightness changes across sequential frames, visible in video.  
+* Fixed-Pattern Noise: Static patterns in specific areas due to sensor defects or aging.  
+
+
+
+
+
+EVALUATION METRICS:
+Image denoising is a critical task in image processing, aimed at recovering clean images from noisy ones. The performance of denoising models is evaluated using the following metrics:
+
+- PSNR (Peak Signal-to-Noise Ratio): Measures the ratio between the maximum possible signal value and the noise. Higher values indicate better denoising.
+- SSIM (Structural Similarity Index): Assesses perceived image quality by comparing structural information between the denoised and reference images.
+- MSE (Mean Squared Error): Measures the average squared difference between the original and denoised images. Lower values indicate better performance.

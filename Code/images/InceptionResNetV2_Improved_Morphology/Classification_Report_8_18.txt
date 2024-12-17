@@ -1,0 +1,10 @@
+                 precision    recall  f1-score   support
+
+        rainfed       0.80      0.80      0.80       424
+fully irrigated       0.81      0.78      0.79       399
+percent deficit       0.68      0.55      0.61       404
+     time delay       0.60      0.74      0.66       386
+
+       accuracy                           0.72      1613
+      macro avg       0.72      0.72      0.71      1613
+   weighted avg       0.72      0.72      0.72      1613

@@ -1,0 +1,60 @@
+CLASSIFICATION OF DENOISER MODELS:
+Denoiser models can be broadly classified into several categories based on their underlying techniques:
+
+1. Traditional Filters
+These are non-learning-based methods that rely on mathematical transformations.
+
+1.1. Linear Filters:
+- Gaussian Filter: Smoothing filter that reduces noise by averaging pixel values. In other terms, it blurs the image to reduce high-frequency noise.
+- Mean Filter: Similar to Gaussian, but uses a uniform kernel.
+- Median Filter: Replaces each pixel with the median value of its neighbourhood, effective for removing salt-and-pepper noise.
+1.2. Non-Linear Filters:
+- Bilateral Filter: Preserves edges while reducing noise by considering both spatial and intensity differences.
+- Wiener Filter: Statistical filter that requires knowledge of the noise and signal power spectra.
+
+2. Wavelet-Based Methods
+
+2.1. Wavelet Transform: Decomposes an image into different frequency bands, allowing for selective noise removal. Example: Discrete Wavelet Transform (DWT).
+2.2. Thresholding: Removes noise coefficients below a certain threshold in the wavelet domain.
+- Hard Thresholding: Zeroes out coefficients below a threshold.
+- Soft Thresholding: Shrinks coefficients toward zero for smoother results.
+2.3. Shrinkage: Reduces the magnitude of noise coefficients, often using soft or hard thresholding. Example: SureShrink, VisuShrink.
+
+3. Deep Learning Models
+
+3.1. Autoencoders: Learn to reconstruct clean images from noisy inputs. Example: DAE (Denoising Autoencoders).
+3.2. Convolutional Neural Networks (CNNs):
+- DnCNN: Deep CNN for image denoising, specifically designed for Gaussian noise.
+- RIDNet: Residual channel attention network designed for real-world noise. (different noise types)
+- FFDNet: Fast and flexible denoising CNN with adjustable noise levels.
+
+3.3. Generative Adversarial Networks (GANs):
+Train a generator to produce clean images and a discriminator to distinguish between real and fake images.
+Example: Noise2Void GAN, DeblurGAN.
+
+3.4. Diffusion Models:
+Gradually add noise to an image and then learn to reverse the process, effectively removing noise.
+Example: Stable Diffusion for Image Restoration.
+
+3.5. Recurrent Neural Networks (RNNs):
+Sequential models effective for video denoising or handling temporal noise in dynamic image sequences.
+Example: ReNet, which processes images in sequential patches, or RNN variants for denoising temporal video frames.
+
+3.6. Transformer-based models: Utilize self-attention mechanisms to model long-range dependencies and adaptively focus on relevant regions for noise removal.
+- SwinIR (Swin Transformer): Leverages hierarchical attention with shifted windows to balance global and local context.
+- Restormer: Combines self-attention with channel-wise mechanisms for efficient denoising and restoration.
+
+4. Pretrained Models
+
+4.1. Noise2Noise: Leverages pairs of noisy images to train a denoiser without clean ground truth data. Example: TensorFlow implementation
+4.2. Real-World Denoising Models: Trained on real-world noisy images to handle complex noise patterns.
+- CBDNet: Handles complex, real-world noise patterns.
+- SwinIR: Transformer-based model effective for low-light and multi-modal noise.
+
+5. Hybrid and Optimization-Based Approaches
+Combine traditional techniques with learning-based methods for enhanced performance.
+
+5.1. Optimization-Based: 
+- Total Variation (TV) Minimization: Removes noise by minimizing total variation in the image.
+5.2. Hybrid Methods: Combine wavelet-based denoising with deep learning models.
+Example: Wavelet CNN (WCNN).
